@@ -6,5 +6,4 @@ sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), 'back
 
 if __name__ == "__main__":
     import uvicorn
-    # Now Python knows exactly how to map the app package path scope
-    uvicorn.run("backend.app.api.main:app", host="0.0.0.0", port=int(os.environ.get("PORT", 8000)))
+    uvicorn.run("app.api.main:app", host="0.0.0.0", port=int(os.environ.get("PORT", 8000)))
