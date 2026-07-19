@@ -1,0 +1,24 @@
+{
+  "name": "fireflies-meeting-assistant-frontend",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Next.js style React SPA frontend for Fireflies Meeting Assistant Clone",
+  "scripts": {
+    "dev": "next dev -p 3000",
+    "build": "next build",
+    "start": "next start -p 3000"
+  },
+  "dependencies": {
+    "@tailwindcss/postcss": "^4.3.3",
+    "lucide-react": "^0.546.0",
+    "motion": "^12.23.24",
+    "next": "^15.1.0",
+    "react": "^19.0.1",
+    "react-dom": "^19.0.1",
+    "tailwindcss": "^4.3.3"
+  },
+  "devDependencies": {
+    "@types/node": "20.17.6",
+    "postcss": "^8.5.19"
+  }
+}

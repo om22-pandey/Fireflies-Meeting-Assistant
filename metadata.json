@@ -1,0 +1,6 @@
+{
+  "name": "Fireflies Meeting Assistant",
+  "description": "A production-quality clone of the Fireflies.ai meeting intelligence and summary assistant, featuring interactive transcripts, media player syncing, AI summarizations, and CRUD action items.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
