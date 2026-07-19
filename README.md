@@ -1,3 +1,4 @@
+try it out : https://fireflies-meeting-assistant-3sod.vercel.app/
 # Fireflies.ai Meeting Assistant Clone
 
 A production-quality clone of the **Fireflies.ai Meeting Assistant** web application. This application replicates the core meeting intelligence workflows, SaaS layout aesthetics, interactive transcripts, bidirectional media player synchronization, and AI-generated summary panels from the original platform.
