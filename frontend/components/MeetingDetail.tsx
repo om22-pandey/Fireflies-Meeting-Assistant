@@ -25,6 +25,7 @@ import {
 import { Meeting, TranscriptSegment, ActionItem, Chapter } from '../types';
 import { formatDuration, formatDate } from './Dashboard';
 
+const API_BASE = process.env.NEXT_PUBLIC_API_URL || "https://fireflies-meeting-assistant.onrender.com";
 interface MeetingDetailProps {
   meetingId: number;
   onBack: () => void;
@@ -35,6 +36,8 @@ export default function MeetingDetail({ meetingId, onBack, darkMode }: MeetingDe
   const [meeting, setMeeting] = useState<Meeting | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
+
+  const API_BASE = process.env.NEXT_PUBLIC_API_URL || "https://fireflies-meeting-assistant.onrender.com";
   
   // Player state
   const [isPlaying, setIsPlaying] = useState(false);
@@ -64,7 +67,7 @@ export default function MeetingDetail({ meetingId, onBack, darkMode }: MeetingDe
   const fetchMeetingDetail = async () => {
     try {
       setLoading(true);
-      const res = await fetch(`/api/meetings/${meetingId}`);
+      const res = await fetch(`${API_BASE}/api/meetings/${meetingId}`);
       if (!res.ok) {
         throw new Error('Failed to load meeting details');
       }
@@ -142,7 +145,7 @@ export default function MeetingDetail({ meetingId, onBack, darkMode }: MeetingDe
   const saveTitle = async () => {
     if (!meeting || !editedTitle.trim()) return;
     try {
-      const res = await fetch(`/api/meetings/${meetingId}`, {
+      const res = await fetch(`${API_BASE}/api/meetings/${meetingId}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ 
@@ -164,7 +167,7 @@ export default function MeetingDetail({ meetingId, onBack, darkMode }: MeetingDe
     if (!meeting) return;
     const filtered = meeting.participants.filter(p => p !== nameToRemove);
     try {
-      const res = await fetch(`/api/meetings/${meetingId}`, {
+      const res = await fetch(`${API_BASE}/api/meetings/${meetingId}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ 
@@ -184,7 +187,7 @@ export default function MeetingDetail({ meetingId, onBack, darkMode }: MeetingDe
     if (!meeting || !newParticipant.trim()) return;
     const updated = [...meeting.participants, newParticipant.trim()];
     try {
-      const res = await fetch(`/api/meetings/${meetingId}`, {
+      const res = await fetch(`${API_BASE}/api/meetings/${meetingId}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ 
@@ -206,7 +209,7 @@ export default function MeetingDetail({ meetingId, onBack, darkMode }: MeetingDe
   const handleToggleActionItem = async (item: ActionItem) => {
     if (!meeting) return;
     try {
-      const res = await fetch(`/api/meetings/${meetingId}/action-items/${item.id}`, {
+      const res = await fetch(`${API_BASE}/api/meetings/${meetingId}/action-items/${item.id}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ completed: !item.completed })
@@ -226,7 +229,7 @@ export default function MeetingDetail({ meetingId, onBack, darkMode }: MeetingDe
     e.preventDefault();
     if (!meeting || !newActionText.trim()) return;
     try {
-      const res = await fetch(`/api/meetings/${meetingId}/action-items`, {
+      const res = await fetch(`${API_BASE}/api/meetings/${meetingId}/action-items`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ 
@@ -251,7 +254,7 @@ export default function MeetingDetail({ meetingId, onBack, darkMode }: MeetingDe
   const handleDeleteActionItem = async (itemId: number) => {
     if (!meeting) return;
     try {
-      const res = await fetch(`/api/meetings/${meetingId}/action-items/${itemId}`, {
+      const res = await fetch(`${API_BASE}/api/meetings/${meetingId}/action-items/${itemId}`, {
         method: 'DELETE'
       });
       if (res.ok) {
