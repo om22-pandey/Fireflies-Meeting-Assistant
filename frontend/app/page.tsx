@@ -17,6 +17,10 @@ import {
   Video
 } from 'lucide-react';
 
+const API_BASE =
+  process.env.NEXT_PUBLIC_API_URL ||
+  "https://fireflies-meeting-assistant.onrender.com";
+
 interface Toast {
   message: string;
   type: 'success' | 'error' | 'info';
@@ -48,7 +52,7 @@ export default function Home() {
   // Fetch all meetings
   const fetchMeetings = async () => {
     try {
-      const res = await fetch('/api/meetings');
+      const res = await fetch(`${API_BASE}/api/meetings`);
       if (!res.ok) throw new Error();
       const data = await res.json();
       setMeetings(data);
