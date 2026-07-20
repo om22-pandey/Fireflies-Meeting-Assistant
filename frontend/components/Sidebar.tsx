@@ -121,11 +121,9 @@ export default function Sidebar({
             <div className="absolute -bottom-0.5 -right-0.5 w-2.5 h-2.5 bg-emerald-500 rounded-full ring-2 ring-white dark:ring-slate-900" />
           </div>
           <div className="flex-1 min-w-0">
-            {/* 👈 Apna naam yahan badal lijiye */}
             <span className="text-xs font-semibold block truncate text-slate-200 dark:text-slate-100">
               Om Pandey
             </span>
-            {/* 👈 Apna Subtitle/Role yahan badal lijiye */}
             <span className="text-[9px] font-mono text-violet-400 uppercase tracking-wider block truncate">
               Lead Developer
             </span>
